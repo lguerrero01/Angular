@@ -1,0 +1,32 @@
+import { Component, OnInit } from '@angular/core';
+import { DestinoViaje } from '../models/destinoViaje.model';
+
+@Component({
+  selector: 'app-lista-destino',
+  templateUrl: './lista-destino.component.html',
+  styleUrls: ['./lista-destino.component.css']
+})
+export class ListaDestinoComponent implements OnInit {
+  destinos: DestinoViaje[];
+  constructor() {
+    this.destinos = [];
+  }
+
+  ngOnInit(): void {
+  }
+
+  guardar(nombre: string, url: string): boolean {
+
+    this.destinos.push(new DestinoViaje(nombre, url));
+    console.log(new DestinoViaje(nombre, url));
+
+    return false;
+
+  }
+
+  elegido(d: DestinoViaje) {
+    this.destinos.forEach(function (x) { x.setSelected(false); });
+    d.setSelected(true);
+  }
+
+}
