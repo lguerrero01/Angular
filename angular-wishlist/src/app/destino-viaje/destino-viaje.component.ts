@@ -8,6 +8,7 @@ import { DestinoViaje } from '../models/destinoViaje.model';
 })
 export class DestinoViajeComponent implements OnInit {
   @Input() destino: DestinoViaje;
+  @Input('idx') position: number;
   @HostBinding('attr.class') cssClass = 'col-md-4'; // tener una vinculacion directa de un atributo
   @Output() clicked: EventEmitter<DestinoViaje>;
   constructor() {
@@ -18,7 +19,7 @@ export class DestinoViajeComponent implements OnInit {
   }
 
   ir() {
-    this.clicked.emit(this.destino);
+    this.clicked.emit(this.destino);// 
     return false;
 
   }
